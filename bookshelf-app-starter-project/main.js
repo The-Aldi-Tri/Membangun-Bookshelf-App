@@ -175,12 +175,15 @@ function createBookItemElement(bookObject) {
   const { id, title, author, year, isComplete } = bookObject;
 
   const textTitle = document.createElement("h3");
+  textTitle.setAttribute("data-testid", "bookItemTitle");
   textTitle.innerText = title;
 
   const textAuthor = document.createElement("p");
+  textAuthor.setAttribute("data-testid", "bookItemAuthor");
   textAuthor.innerText = `Penulis: ${author}`;
 
   const textYear = document.createElement("p");
+  textYear.setAttribute("data-testid", "bookItemYear");
   textYear.innerText = `Tahun: ${year}`;
 
   const isCompleteButton = document.createElement("button");
