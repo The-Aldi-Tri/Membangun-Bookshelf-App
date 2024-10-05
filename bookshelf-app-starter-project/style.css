@@ -1,0 +1,235 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body,
+input,
+button {
+  font-family: "Open Sans", sans-serif;
+}
+
+header {
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #a66e38;
+  color: white;
+}
+
+main {
+  max-width: 900px;
+  width: 80%;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.bookFormSection {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.bookFormSection > h2 {
+  text-align: center;
+  color: #a66e38;
+}
+
+.bookFormSection > form > .bookFormInput {
+  margin: 8px 0;
+}
+
+.bookFormSection > form > button {
+  background-color: #a66e38;
+  color: white;
+  border: 0;
+  border-radius: 5px;
+  display: block;
+  width: 100%;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.bookFormSection > form > button > span {
+  font-weight: bold;
+}
+
+.bookFormSection > form > .bookFormInput > input {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  border-radius: 5px;
+}
+
+.bookFormSection > form > .bookFormInput > label {
+  color: #a66e38;
+  font-weight: bold;
+}
+
+.bookFormSection > form > .bookFormInputInline {
+  margin: 12px 0;
+  display: flex;
+  align-items: center;
+}
+
+.bookFormSection > form > .bookFormInputInline > label {
+  color: #a66e38;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.searchBookSection {
+  margin: 16px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.searchBookSection > h2 {
+  color: #a66e38;
+}
+
+.searchBookSection > form {
+  padding: 16px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto 1fr 0.5fr;
+  grid-gap: 10px;
+}
+
+.searchBookSection > form > label {
+  display: flex;
+  align-items: center;
+}
+
+.searchBookSection > form > input {
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.searchBookSection > form > button {
+  background-color: #a66e38;
+  color: white;
+  border: 0;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.searchResult {
+  width: 100%;
+  padding: 16px;
+}
+.searchResult > h3 {
+  margin-bottom: 16px;
+}
+
+.searchResult > button {
+  border: 0;
+  padding: 5px;
+  margin: 0 5px 0 0;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: darkturquoise;
+  color: white;
+}
+
+.bookshelfSection {
+  margin: 16px 0 0 0;
+  border: 1px solid black;
+  padding: 16px;
+  border-radius: 10px;
+}
+
+.bookshelfSection > h2 {
+  color: #a66e38;
+}
+
+.bookshelfSection > .bookList {
+  padding: 16px;
+}
+
+.bookshelfSection > .bookList > .bookItem {
+  padding: 8px 16px 16px 16px;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin: 10px 0;
+}
+
+.bookshelfSection > .bookList > .bookItem > h3,
+p {
+  margin: 8px 0;
+}
+
+.bookshelfSection > .bookList > .bookItem > .actionButton > button {
+  border: 0;
+  padding: 5px;
+  margin: 0 5px 0 0;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.bookshelfSection > .bookList > .bookItem > .actionButton > .markButton {
+  background-color: darkgreen;
+  color: white;
+}
+
+.bookshelfSection > .bookList > .bookItem > .actionButton > .deleteButton {
+  background-color: darkred;
+  color: white;
+}
+
+.bookshelfSection > .bookList > .bookItem > .actionButton > .editButton {
+  background-color: darkgoldenrod;
+  color: white;
+}
+
+#editForm > #editInput {
+  margin: 8px 0;
+}
+
+#editForm > #editInput > input {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  border-radius: 5px;
+}
+
+#editForm > #editInput > label {
+  color: #a66e38;
+  font-weight: bold;
+}
+
+#editForm > #editInputInline {
+  margin: 12px 0;
+  display: flex;
+  align-items: center;
+}
+
+#editForm > #editInputInline > label {
+  color: #a66e38;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+#editForm > div > button {
+  border: 0;
+  padding: 5px;
+  margin: 0 5px 0 0;
+  border-radius: 5px;
+}
+
+#editForm > div > #editCancelButton {
+  background-color: darkred;
+  color: white;
+}
+#editForm > div > #editSubmitButton {
+  background-color: darkgreen;
+  color: white;
+}

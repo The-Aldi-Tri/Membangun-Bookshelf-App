@@ -79,6 +79,7 @@ function editHandler(bookId, bookTitle, bookAuthor, bookYear, bookIsComplete) {
   titleInput.setAttribute("required", "");
   titleInput.value = bookTitle;
   const titleContainer = document.createElement("div");
+  titleContainer.setAttribute("id", "editInput");
   titleContainer.append(titleLabel, titleInput);
 
   const authorLabel = document.createElement("label");
@@ -90,6 +91,7 @@ function editHandler(bookId, bookTitle, bookAuthor, bookYear, bookIsComplete) {
   authorInput.setAttribute("required", "");
   authorInput.value = bookAuthor;
   const authorContainer = document.createElement("div");
+  authorContainer.setAttribute("id", "editInput");
   authorContainer.append(authorLabel, authorInput);
 
   const yearLabel = document.createElement("label");
@@ -101,6 +103,7 @@ function editHandler(bookId, bookTitle, bookAuthor, bookYear, bookIsComplete) {
   yearInput.setAttribute("required", "");
   yearInput.value = bookYear;
   const yearContainer = document.createElement("div");
+  yearContainer.setAttribute("id", "editInput");
   yearContainer.append(yearLabel, yearInput);
 
   const isCompleteLabel = document.createElement("label");
@@ -111,14 +114,17 @@ function editHandler(bookId, bookTitle, bookAuthor, bookYear, bookIsComplete) {
   isCompleteInput.setAttribute("type", "checkbox");
   isCompleteInput.checked = bookIsComplete;
   const isCompleteContainer = document.createElement("div");
+  isCompleteContainer.setAttribute("id", "editInputInline");
   isCompleteContainer.append(isCompleteLabel, isCompleteInput);
 
   const cancelButton = document.createElement("button");
   cancelButton.setAttribute("type", "button");
+  cancelButton.setAttribute("id", "editCancelButton");
   cancelButton.textContent = "Batal";
 
   const submitButton = document.createElement("button");
   submitButton.setAttribute("type", "submit");
+  submitButton.setAttribute("id", "editSubmitButton");
   submitButton.textContent = "Simpan";
 
   const buttonContainer = document.createElement("div");
@@ -182,6 +188,7 @@ function createBookItemElement(bookObject) {
     ? "Belum selesai dibaca"
     : "Selesai dibaca";
   isCompleteButton.setAttribute("data-testid", "bookItemIsCompleteButton");
+  isCompleteButton.setAttribute("class", "markButton");
   isCompleteButton.addEventListener("click", function () {
     markHandler(id, !isComplete);
   });
@@ -189,6 +196,7 @@ function createBookItemElement(bookObject) {
   const deleteButton = document.createElement("button");
   deleteButton.innerText = "Hapus buku";
   deleteButton.setAttribute("data-testid", "bookItemDeleteButton");
+  deleteButton.setAttribute("class", "deleteButton");
   deleteButton.addEventListener("click", function () {
     deleteHandler(id);
   });
@@ -196,16 +204,19 @@ function createBookItemElement(bookObject) {
   const editButton = document.createElement("button");
   editButton.innerText = "Edit buku";
   editButton.setAttribute("data-testid", "bookItemEditButton");
+  editButton.setAttribute("class", "editButton");
   editButton.addEventListener("click", function () {
     editHandler(id, title, author, year, isComplete);
   });
 
   const buttonContainer = document.createElement("div");
+  buttonContainer.setAttribute("class", "actionButton");
   buttonContainer.append(isCompleteButton, deleteButton, editButton);
 
   const bookItemContainer = document.createElement("div");
   bookItemContainer.setAttribute("data-bookid", id);
   bookItemContainer.setAttribute("data-testid", "bookItem");
+  bookItemContainer.setAttribute("class", "bookItem");
   bookItemContainer.append(textTitle, textAuthor, textYear, buttonContainer);
 
   return bookItemContainer;
@@ -243,14 +254,15 @@ function searchBooksHandler() {
 
   const searchResultContainer = document.createElement("div");
   searchResultContainer.setAttribute("id", "searchResultContainer");
+  searchResultContainer.setAttribute("class", "searchResult");
   searchResultContainer.append(
     keywordElement,
     searchResultElement,
     clearSearchButton
   );
 
-  const searchBookForm = document.getElementById("searchBook");
-  searchBookForm.append(searchResultContainer);
+  const searchBookSection = document.querySelector(".searchBookSection");
+  searchBookSection.append(searchResultContainer);
 
   document.dispatchEvent(new Event(RENDER_BOOKSHELF_EVENT));
 }
@@ -263,6 +275,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const bookForm = document.getElementById("bookForm");
   bookForm.addEventListener("submit", function (event) {
     event.preventDefault();
+    isEditing = false;
+    isSearchOn = false;
+    document.querySelector("#searchResultContainer")?.remove();
     addBookHandler();
   });
 
@@ -270,6 +285,16 @@ document.addEventListener("DOMContentLoaded", function () {
   searchBookForm.addEventListener("submit", function (event) {
     event.preventDefault();
     searchBooksHandler();
+  });
+
+  const isCompleteCheckbox = document.getElementById("bookFormIsComplete");
+  isCompleteCheckbox.addEventListener("change", function () {
+    const bookFormSpan = document.getElementById("choice");
+    if (isCompleteCheckbox.checked) {
+      bookFormSpan.innerText = "Selesai dibaca";
+    } else {
+      bookFormSpan.innerText = "Belum selesai dibaca";
+    }
   });
 });
 
